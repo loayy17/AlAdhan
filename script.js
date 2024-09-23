@@ -2,24 +2,21 @@ const date = new Date();
 const formattedDate = `${String(date.getDate()).padStart(2, "0")}`;
 function updateDateTime() {
   const now = new Date(); // Get the current date and time
-  const options = { 
-      year: 'numeric', 
-      month: 'short', 
-      day: 'numeric', 
-      hour: '2-digit', 
-      minute: '2-digit', 
-      second: '2-digit',
-      hour12: false
+  const options = {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: false,
   };
-  const dateTimeString = now.toLocaleString('en-US', options);
-  const timeDiv = document.querySelector('.time');
+  const dateTimeString = now.toLocaleString("en-US", options);
+  const timeDiv = document.querySelector(".time");
   timeDiv.innerHTML = dateTimeString;
 }
-updateDateTime();
 
-setInterval(updateDateTime, 1000);
-
-window.onload= city()
+window.onload = city();
 function city() {
   let cityLocation = document.getElementById("city").value || "Amman";
   axios
@@ -47,3 +44,6 @@ function salate(fajr, shrouk, dhuhr, asr, majreb, isha) {
   document.getElementById("sunset").innerHTML = majreb.split(" ")[0];
   document.getElementById("isha").innerHTML = isha.split(" ")[0];
 }
+updateDateTime();
+
+setInterval(updateDateTime, 1000);
